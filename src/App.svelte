@@ -1,4 +1,6 @@
 <script>
+	import { backgrounds } from "./backgrounds";
+	let firstBackground = backgrounds.shift();
 	let status = "off";
 	let isSupported = false;
 	if ("wakeLock" in navigator) {
@@ -39,23 +41,13 @@
 		data-interval="60000">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img
-					class="d-block w-100"
-					src="https://lh6.googleusercontent.com/-A0tXm8gjfMU/U08VDMRGtuI/AAAAAAAAvrI/IQEscTGZyJY/s1920-w1920-h1080-c/IMG_0293%2Bhe.jpg"
-					alt="First slide" />
+				<img class="d-block w-100" src={firstBackground.url} alt="" />
 			</div>
-			<div class="carousel-item">
-				<img
-					class="d-block w-100"
-					src="https://lh3.googleusercontent.com/-1xZqgaRDIec/Tg1dMJq1vBI/AAAAAAAAALc/7m0Tpv2htVc/s1920-w1920-h1080-c/071227-4144-PtLomaReef.jpg"
-					alt="Second slide" />
-			</div>
-			<div class="carousel-item">
-				<img
-					class="d-block w-100"
-					src="https://lh3.googleusercontent.com/-36YdSRh6q9w/TgtZEChvrkI/AAAAAAAJA0M/zVvIUAdwQ3Q/s1920-w1920-h1080-c/976865336_a%2Bview%2Bof%2Bqueenstown.jpg"
-					alt="Third slide" />
-			</div>
+			{#each backgrounds as background}
+				<div class="carousel-item">
+					<img class="d-block w-100" src={background.url} alt="" />
+				</div>
+			{/each}
 		</div>
 		<a
 			class="carousel-control-prev"
