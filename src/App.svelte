@@ -1,7 +1,6 @@
 <script>
 	import { backgrounds } from "./backgrounds";
 	let firstBackground = backgrounds.shift();
-	let status = "off";
 	let isSupported = false;
 	if ("wakeLock" in navigator) {
 		isSupported = true;
@@ -20,7 +19,6 @@
 				wakeLock = await navigator.wakeLock.request("screen");
 				// change up our interface to reflect wake lock active
 				console.log("Wake lock active!");
-				status = "on";
 			} catch (err) {
 				// if wake lock request fails - usually system related, such as battery
 				console.log(`${err.name}, ${err.message}`);
